@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+
+  <!-- Manifest -->
+  <project path="manifest" name="manifest" remote="zircon" groups="zircon" />
+
+  <!-- Build repositories -->
+  <remove-project name="platform/build" />
+  <project path="build/make" name="android_build" remote="zircon" groups="zircon" >
+    <copyfile src="core/root.mk" dest="Makefile" />
+    <linkfile src="CleanSpec.mk" dest="build/CleanSpec.mk" />
+    <linkfile src="buildspec.mk.default" dest="build/buildspec.mk.default" />
+    <linkfile src="core" dest="build/core" />
+    <linkfile src="envsetup.sh" dest="build/envsetup.sh" />
+    <linkfile src="target" dest="build/target" />
+    <linkfile src="tools" dest="build/tools" />
+  </project>
+  <remove-project name="platform/build/soong" />
+  <project path="build/soong" name="android_build_soong" remote="zircon" groups="zircon" >
+    <linkfile src="root.bp" dest="Android.bp" />
+    <linkfile src="bootstrap.bash" dest="bootstrap.bash" />
+  </project>
+  <project path="vendor/qcom/sdclang-3.9/linux-x86" name="proprietary_vendor_qcom_sdclang-3.9_linux-x86" remote="blobs" revision="pie" />
+  <project path="vendor/qcom/sdclang-4.0/linux-x86" name="proprietary_vendor_qcom_sdclang-4.0_linux-x86" remote="blobs" revision="pie" />
+  <project path="vendor/qcom/sdclang-6.0/linux-x86" name="proprietary_vendor_qcom_sdclang-6.0_linux-x86" remote="blobs" revision="pie" />
+
+  <!-- Hardware -->
+  <remove-project name="platform/hardware/qcom/bootctrl"/>
+  <project path="hardware/qcom/bootctrl" name="hardware_qcom_bootctrl" remote="zircon" groups="zircon" />
+  <remove-project name="platform/hardware/qcom/bt"/>
+  <project path="hardware/qcom/bt" name="hardware_qcom_bt" remote="zircon" groups="zircon" />
+  <remove-project name="platform/hardware/interfaces" />
+  <project path="hardware/interfaces" name="hardware_interfaces" remote="zircon" groups="zircon" />
+  <remove-project name="platform/hardware/libhardware" />
+  <project path="hardware/libhardware" name="android_hardware_libhardware" remote="zircon" groups="zircon" />
+
+
+  <!-- Native -->
+  <remove-project name="platform/bionic" />
+  <project path="bionic" name="android_bionic" remote="zircon" groups="zircon" />
+
+  <!-- Frameworks -->
+  <remove-project name="platform/frameworks/av" />
+  <project path="frameworks/av" name="frameworks_av" remote="zircon" groups="zircon" />
+  <remove-project name="platform/frameworks/base" />
+  <project path="frameworks/base" name="frameworks_base" remote="zircon" groups="zircon" />
+  <remove-project name="platform/frameworks/native" />
+  <project path="frameworks/native" name="frameworks_native" remote="zircon" groups="zircon" />
+  <remove-project name="platform/frameworks/opt/telephony" />
+  <project path="frameworks/opt/telephony" name="frameworks_opt_telephony" remote="zircon" groups="zircon" />
+
+  <!-- Packages -->
+  <remove-project name="platform/packages/apps/Settings" />
+  <project path="packages/apps/Settings" name="packages_apps_Settings" remote="zircon" groups="zircon" />
+
+  <!-- External -->
+  <remove-project name="platform/external/selinux" />
+  <project path="external/selinux" name="external_selinux" remote="zircon" groups="zircon" />
+
+  <!-- Prebuilts -->
+  <remove-project name="platform/external/ant-wireless/ant_native" />
+  <project path="external/ant-wireless/ant_native" name="android_external_ant-wireless_ant_native" remote="zircon" groups="zircon" />
+  <remove-project name="platform/prebuilts/build-tools" />
+  <project path="prebuilts/build-tools" name="android_prebuilts_build-tools" remote="zircon" groups="zircon" />
+
+  <!-- System -->
+  <remove-project name="platform/system/core" />
+  <project path="system/core" name="android_system_core" remote="zircon" groups="zircon" revision="pie" />
+  <remove-project name="platform/system/sepolicy" />
+  <project path="system/sepolicy" name="android_system_sepolicy" remote="zircon" groups="zircon" />
+  <remove-project name="platform/system/libhwbinder" />
+  <project path="system/libhwbinder" name="android_system_libhwbinder" remote="zircon" groups="zircon" />
+
+  <!-- Vendor -->
+  <project path="vendor/zirconium" name="android_vendor_zirconium" remote="zircon" groups="zircon" >
+  </project>
+  <remove-project name="platform/vendor/codeaurora/telephony" />
+  <project path="vendor/codeaurora/commonsys/telephony" name="android_vendor_codeaurora_commonsys_telephony" remote="zircon" groups="zircon" />
+  <remove-project name="platform/vendor/qcom-opensource/bluetooth" />
+  <project path="vendor/qcom/opensource/commonsys/bluetooth" name="android_vendor_qcom_opensource_commonsys_bluetooth" remote="zircon" groups="zircon" />
+  <remove-project name="platform/vendor/qcom-opensource/bluetooth_ext" />
+  <project path="vendor/qcom/opensource/commonsys/bluetooth_ext" name="android_vendor_qcom_opensource_commonsys_bluetooth_ext" remote="zircon" groups="zircon" />
+  <remove-project name="platform/vendor/qcom-opensource/fm" />
+  <project path="vendor/qcom/opensource/fm" name="android_vendor_qcom-opensource_fm" remote="zircon" groups="zircon" />
+  <remove-project name="platform/vendor/qcom-opensource/fm-commonsys" />
+  <project path="vendor/qcom/opensource/fm-commonsys" name="android_vendor_qcom-opensource_fm-commonsys" remote="zircon" groups="zircon" />
+  <remove-project name="platform/vendor/qcom-opensource/system/bt" />
+  <project path="vendor/qcom/opensource/commonsys/system/bt" name="android_vendor_qcom_opensource_commonsys_system_bt" remote="zircon" groups="zircon" />
+  <remove-project name="platform/vendor/qcom-opensource/power" />
+  <project path="vendor/qcom/opensource/power" name="android_vendor_qcom-opensource_power" remote="zircon" groups="zircon" />
+
+  <!-- Recovery -->
+  <remove-project name="platform/bootable/recovery" />
+  <project path="bootable/recovery" name="android_bootable_recovery" remote="zircon" groups="zircon" />
+
+  <!-- Darwin -->
+  <project path="prebuilts/clang/host/darwin-x86" name="platform/prebuilts/clang/host/darwin-x86" groups="pdk,darwin" clone-depth="1" remote="aosp" />
+  <project path="prebuilts/gcc/darwin-x86/aarch64/aarch64-linux-android-4.9" name="platform/prebuilts/gcc/darwin-x86/aarch64/aarch64-linux-android-4.9" groups="pdk,darwin,arm" clone-depth="1" remote="aosp" />
+  <project path="prebuilts/gcc/darwin-x86/arm/arm-linux-androideabi-4.9" name="platform/prebuilts/gcc/darwin-x86/arm/arm-linux-androideabi-4.9" groups="pdk,darwin,arm" clone-depth="1" remote="aosp" />
+  <project path="prebuilts/gdb/darwin-x86" name="platform/prebuilts/gdb/darwin-x86" groups="darwin" clone-depth="1" remote="aosp" />
+  <project path="prebuilts/go/darwin-x86" name="platform/prebuilts/go/darwin-x86" groups="darwin,pdk,tradefed" clone-depth="1" remote="aosp" />
+
+  <!-- Obsolete Packages -->
+  <remove-project name="abl/tianocore/edk2"/>
+  <remove-project name="device/generic/arm64"/>
+  <remove-project name="device/generic/armv7-a-neon"/>
+  <remove-project name="device/generic/common"/>
+  <remove-project name="device/generic/goldfish"/>
+  <remove-project name="device/generic/mini-emulator-arm64"/>
+  <remove-project name="device/generic/mini-emulator-armv7-a-neon"/>
+  <remove-project name="device/generic/mini-emulator-x86"/>
+  <remove-project name="device/generic/mini-emulator-x86_64"/>
+  <remove-project name="device/generic/qemu"/>
+  <remove-project name="device/generic/x86"/>
+  <remove-project name="device/google/muskie"/>
+  <remove-project name="device/google/taimen"/>
+  <remove-project name="device/google/wahoo"/>
+  <remove-project name="platform/vendor/opensource/audio-kernel"/>
+  <remove-project name="platform/vendor/qcom-opensource/wlan/fw-api"/>
+  <remove-project name="platform/vendor/qcom-opensource/wlan/qca-wifi-host-cmn"/>
+  <remove-project name="platform/vendor/qcom-opensource/wlan/qcacld-3.0"/>
+  <remove-project name="platform/vendor/qcom-opensource/wlan/utils/sigma-dut"/>
+  <remove-project name="platform/vendor/qcom/ferrum"/>
+  <remove-project name="platform/vendor/qcom/msm8909go"/>
+  <remove-project name="platform/vendor/qcom/skunk"/>
+  <remove-project name="platform/vendor/qcom/thulium"/>
+  <remove-project name="platform/vendor/qcom/wlan"/>
+  <remove-project name="platform/hardware/qcom/audio"/>
+  <remove-project name="platform/hardware/qcom/display"/>
+  <remove-project name="platform/hardware/qcom/gps"/>
+  <remove-project name="platform/hardware/qcom/media"/>
+  <remove-project name="device/sample"/>
+  <remove-project name="kernel/msm-4.9"/>
+  <remove-project name="device/generic/x86_64"/>
+  <remove-project name="platform/vendor/qcom-opensource/display-commonsys-intf"/>
+  <remove-project name="platform/vendor/qcom-opensource/location"/>
+  <remove-project name="platform/packages/apps/CMFileManager"/>
+  <remove-project name="device/generic/goldfish-opengl"/>
+  <remove-project name="platform/packages/apps/Gallery"/>
+  <remove-project name="platform/packages/apps/Launcher2"/>
+  <remove-project name="platform/packages/apps/SnapdragonCamera"/>
+  <remove-project name="platform/hardware/qcom/thermal"/>
+</manifest>
